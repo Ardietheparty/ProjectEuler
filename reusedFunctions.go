@@ -1,37 +1,15 @@
 package main
 
 import (
-	"fmt"
 	"math"
 	"sort"
-	"time"
 )
 /*
-Summation of primes
-
-The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
-
-Find the sum of all the primes below two million.
-
- */
+IsPrime
+Needs a global array primes i.e
 var primes []int
-func main() {
-	primes = []int{2}
-	timeStart := time.Now()
-	N := 2000000
-	sum := 0
-	for i := 3; i < N; i += 2 {
-		if IsPrime(i) {
-			primes = append(primes,i)
-		}
-	}
-	for i:=0;i<len(primes);i++ {
-		sum += primes[i]
-	}
-	fmt.Println(sum)
-
-	fmt.Println(time.Since(timeStart))
-}
+primes = []int{2,3}
+ */
 func IsPrime(n int) bool {
 	pMax := primes[len(primes)-1]
 	if n <= pMax {

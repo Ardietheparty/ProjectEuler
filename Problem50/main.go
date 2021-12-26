@@ -7,28 +7,35 @@ import (
 	"time"
 )
 /*
-Summation of primes
+Consecutive prime sum
 
-The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
 
-Find the sum of all the primes below two million.
+The prime 41, can be written as the sum of six consecutive primes:
+41 = 2 + 3 + 5 + 7 + 11 + 13
+
+This is the longest sum of consecutive primes that adds to a prime below one-hundred.
+
+The longest sum of consecutive primes below one-thousand that adds to a prime, contains 21 terms, and is equal to 953.
+
+Which prime, below one-million, can be written as the sum of the most consecutive primes?
 
  */
 var primes []int
 func main() {
-	primes = []int{2}
 	timeStart := time.Now()
-	N := 2000000
-	sum := 0
-	for i := 3; i < N; i += 2 {
+	bnd := 100
+	primes = []int{2}
+	for i := 3; i < bnd; i++ {
 		if IsPrime(i) {
 			primes = append(primes,i)
 		}
 	}
-	for i:=0;i<len(primes);i++ {
-		sum += primes[i]
+	primeSum := make([]int,len(primes)+1)
+	primeSum[0]=0
+	for i := 0; i < len(primes); i++ {
+		primeSum[i+1]=primeSum[i]+primes[i]
 	}
-	fmt.Println(sum)
+	fmt.Println(primeSum)
 
 	fmt.Println(time.Since(timeStart))
 }
